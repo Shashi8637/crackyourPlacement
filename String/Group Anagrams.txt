@@ -1,0 +1,26 @@
+class Solution {
+public:
+    vector<vector<string>> groupAnagrams(vector<string>& strs) {
+        vector<vector<string>>ans;
+        unordered_map<string,vector<string>>mp;
+        for(auto s: strs){
+            string tem = s;
+            sort(s.begin(),s.end());
+            if(mp.find(s)==mp.end()){
+                vector<string>temp;
+                temp.push_back(tem);
+                mp[s] = temp;
+            }
+            else{
+                mp[s].push_back(tem);
+            }
+
+        }
+
+        for(auto x: mp){
+            vector<string>res = x.second;
+            ans.push_back(res);
+        }
+        return ans;
+    }
+};

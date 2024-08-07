@@ -1,0 +1,47 @@
+public:
+    
+    ListNode* mergeLL(ListNode* a, ListNode* b){
+        ListNode* dummy = new ListNode(100);
+        ListNode* temp = dummy;
+        while(a!=NULL && b!=NULL){
+            if(a->data<=b->data){
+                temp->next = a;
+                a = a->next;
+                temp = temp->next;
+            }
+            else{
+                temp->next = b;
+                b = b->next;
+                temp = temp->next;
+            }
+        }
+        while(a!=NULL){
+            temp->next = a;
+            a = a->next;
+            temp = temp->next;
+        }
+        while(b!=NULL){
+            temp->next = b;
+            b = b->next;
+            temp = temp->next;
+        }
+        return dummy->next;
+    }
+    // your task is to complete this function
+    void sort(Node **head)
+    {
+         // Code here
+         Node* slow = head;
+         Node* fast = head;
+         while(fast->next!=NULL && fast->next->next!=NULL){
+             slow = slow->next;
+             fast = fast->next->next;
+         }
+         ListNode* a = head;
+         ListNode* b = slow->next;
+         slow->next = NULL;
+         ListNode* c = mergeLL(a,b);
+         
+        
+         
+    }

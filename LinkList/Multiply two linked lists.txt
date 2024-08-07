@@ -1,0 +1,43 @@
+/* Linked list node structure
+struct Node
+{
+    int data;
+    Node* next;
+
+    Node(int x){
+        data = x;
+        next = NULL;
+    }
+
+};*/
+
+/*The method multiplies
+two  linked lists l1 and l2
+and returns their product*/
+
+/* Multiply contents of two linked lists */
+#define MOD 1000000007
+class solution {
+  public:
+  
+  long long findDigit(Node *first){
+      Node* temp = first;
+      long long ans = 0;
+      while(temp!=NULL){
+          ans = ((ans*10)+(temp->data))%MOD;
+          temp = temp->next;
+      }
+      return ans;
+  }
+  
+  
+  
+    long long multiplyTwoLists(Node *first, Node *second) {
+        // code here
+        long a = findDigit(first);
+       long b = findDigit(second);
+        
+        
+        return a*b%MOD;
+    }
+};
